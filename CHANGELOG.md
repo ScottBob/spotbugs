@@ -4,7 +4,113 @@ This is the changelog for SpotBugs. This follows [Keep a Changelog v1.0.0](http:
 
 Currently the versioning policy of this project follows [Semantic Versioning v2.0.0](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased - 2017-??-??
+## 3.1.12 - 2019-02-28
+
+### Added
+
+* Make TypeQualifierResolver recognize androidx.annotation.NonNull and Nullable ([#880](https://github.com/spotbugs/spotbugs/pull/880))
+
+### Changed
+* Bump up Apache Commons BCEL to [the version 6.3](http://mail-archives.apache.org/mod_mbox/commons-user/201901.mbox/%3CCACZkXPy3VgLmD2jppzEPwOqVDJYMM2QG%2BtWQCyzfKmZrDwem6A%40mail.gmail.com%3E)
+
+### Security
+* Update dom4j to 2.1.1 to fix security vulnerability. ([#864](https://github.com/spotbugs/spotbugs/issues/864))
+
+## 3.1.11 - 2019-01-18
+
+### Fixed
+* False positive: parameter must be non-null in inner class constructor ([#772](https://github.com/spotbugs/spotbugs/issues/772))
+
+## 3.1.10 - 2018-12-19
+
+### Fixed
+* Fix bug that enhanced xml options not recognized as textui mode
+* Dataflow generates too much log ([#601](https://github.com/spotbugs/spotbugs/issues/601))
+* Delete redundant put plugin ([#720](https://github.com/spotbugs/spotbugs/pull/720))
+
+### Added
+* Add new detector IRA\_INEFFICIENT\_REPLACEALL for detecting usage of String.replaceAll where no regex is being used ([#705](https://github.com/spotbugs/spotbugs/issues/705))
+
+### Changed
+* Eclipse plugin is now signed to establish validity ([#779](https://github.com/spotbugs/spotbugs/issues/779))
+* edu.umd.cs.findbugs.util.ClassName#assertIsDotted return type is changed to void
+* edu.umd.cs.findbugs.util.ClassName#assertIsSlashed return type is changed to void
+* Detect method parameter type annotations ([#743](https://github.com/spotbugs/spotbugs/issues/743))
+
+### Deprecated
+* edu.umd.cs.findbugs.classfile.ClassDescriptor#toDottedClassName() is depricated and getDottedClassName() can be used instead.
+
+## 3.1.9 - 2018-11-20
+
+### Fixed
+* Fix some out-of-bounds reports from LGTM
+* Update asm to 7.0 for better Java 11 support ([#785](https://github.com/spotbugs/spotbugs/pull/785))
+* Ignore @FXML annotated fields in UR\_UNIT\_READ ([#702](https://github.com/spotbugs/spotbugs/issues/702))
+
+### CHANGED
+* Allow parallel workspace builds in Eclipse with Spotbugs installed
+
+## 3.1.8 - 2018-10-16
+
+### Fixed
+* Update asm to 6.2.1 for better Java 12 support ([#741](https://github.com/spotbugs/spotbugs/issues/741))
+* Fix hash code collision ([#751](https://github.com/spotbugs/spotbugs/pull/751))
+* Partially revert [#688](https://github.com/spotbugs/spotbugs/pull/688) because of the error in specific case with `checkcast` opcode ([#760](https://github.com/spotbugs/spotbugs/pull/760))
+
+## 3.1.7 - 2018-09-12
+
+### Fixed
+* Don't print exit code related output if '-quiet' is passed ([#714](https://github.com/spotbugs/spotbugs/pull/714))
+* Don't underflow the stack at INVOKEDYNAMIC when modeling stack frame types ([#500](https://github.com/spotbugs/spotbugs/issues/500))
+
+### CHANGED
+* ASM_VERSION=ASM7_EXPERIMENTAL by default to support Java 11
+* Removed dependency to jFormatString (GPL) code ([#725](https://github.com/spotbugs/spotbugs/issues/725))
+* Read User Preferences exported from SpotBugs Eclipse Plugin  ([#728](https://github.com/spotbugs/spotbugs/issues/728))
+
+### ADDED
+* Set ASM_VERSION=ASM6 if system property spotbugs.experimental=false
+
+## 3.1.6 - 2018-07-18
+
+### Fixed
+
+* Potential NPE in test-harness-core ([#671](https://github.com/spotbugs/spotbugs/issues/671))
+* Support project path with spaces in test-harness-core ([#683](https://github.com/spotbugs/spotbugs/issues/683))
+* Processing of "J" (long value constants) was not processed in `OpcodeStack.Item(OpcodeStack.Item, String)`
+* Processing of "Z" (boolean value constants) was not processed in `OpcodeStack.Item(OpcodeStack.Item, String)`
+* Processing of Box classes like `java.lang.Integer` was not processed in `OpcodeStack.Item(OpcodeStack.Item, String)`
+
+## 3.1.5 - 2018-06-15
+
+### Fixed
+
+* Keep IO.close(Closeable) that was deleted by 3.1.4 ([#661](https://github.com/spotbugs/spotbugs/issues/661))
+
+## 3.1.4 - 2018-06-11 [YANKED]
+
+### Fixed
+
+* RANGE_ARRAY_LENGTH and RANGE_ARRAY_OFFSET false negative ([#595](https://github.com/spotbugs/spotbugs/issues/595))
+* Close source file after analysis ([#591](https://github.com/spotbugs/spotbugs/issues/591))
+* Inconsistent reporting for EI_EXPOSE_REP2 ([#603](https://github.com/spotbugs/spotbugs/issues/603))
+* Update asm to 6.2 for better Java 11 support ([#648](https://github.com/spotbugs/spotbugs/issues/648))
+* False positive: 'return value ignored' on Guavas Preconditions.checkNotNull() ([#578](https://github.com/spotbugs/spotbugs/issues/578))
+* spotbugs-ant Ant dependency in wrong scope ([#655](https://github.com/spotbugs/spotbugs/issues/655))
+
+## 3.1.3 - 2018-04-18
+
+### Added
+
+* Support for errorprone @CheckReturnValue annotation ([#592](https://github.com/spotbugs/spotbugs/issues/592))
+
+### Fixed
+
+* Handle annotation on `package-info.class` properly ([#592](https://github.com/spotbugs/spotbugs/issues/592))
+* Update asm to 6.1.1 to support Java 10
+* Update Apache BCEL to 6.2 to support Java 9 package & module reference
+
+## 3.1.2 - 2018-02-24
 
 ### Added
 
@@ -17,6 +123,8 @@ Currently the versioning policy of this project follows [Semantic Versioning v2.
 * Lambda methods reported as missing classes ([#527](https://github.com/spotbugs/spotbugs/issues/527))
 * Unused variable reported with wrong name ([#516](https://github.com/spotbugs/spotbugs/issues/516))
 * Require gradle 4.2.1 to fix gradle build failures on Java 9.0.1
+* Do not print exceptions for unsupported classpath files ([#497](https://github.com/spotbugs/spotbugs/issues/497))
+* Update dom4j to 2.1.0 to fix Illegal reflective access on Java 9
 
 ## 3.1.1 - 2017-11-29
 
